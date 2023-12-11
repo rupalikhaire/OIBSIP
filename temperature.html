@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title style="border: #ca39ab;">Temperature Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #converter {
+      text-align:left;
+      padding: 20px;
+      background-color: #56b3b3;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      font-size: 1.2em;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+
+    button {
+      background-color: #ca39ab;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 1.5em;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="converter">
+    <h2 style="border:#45a049;">Temperature Converter</h2>
+    <label for="temperature" style="text-align: left;">Enter Temperature:</label>
+    <input type="number" id="temperature" placeholder="Enter temperature" />
+
+    <label for="unit">Select Unit:</label>
+    <select id="unit">
+      <option value="celsius">Celsius</option>
+      <option value="fahrenheit">Fahrenheit</option>
+    </select>
+
+    <button onclick="convertTemperature()">Convert</button>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function convertTemperature() {
+      var temperatureInput = document.getElementById('temperature').value;
+      var unitSelect = document.getElementById('unit');
+      var selectedUnit = unitSelect.options[unitSelect.selectedIndex].value;
+      var resultElement = document.getElementById('result');
+
+      if (selectedUnit === 'celsius') {
+        var result = (temperatureInput * 9/5) + 32;
+        resultElement.innerText = `Result: ${temperatureInput} Celsius = ${result.toFixed(2)} Fahrenheit`;
+      } else {
+        var result = (temperatureInput - 32) * 5/9;
+        resultElement.innerText = `Result: ${temperatureInput} Fahrenheit = ${result.toFixed(2)} Celsius`;
+      }
+    }
+  </script>
+
+</body>
+</html>
